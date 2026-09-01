@@ -8,6 +8,16 @@ app.include_router(food_router)
 app.include_router(chat_router)
 
 
+@app.get("/")
+def root() -> dict[str, str]:
+	return {
+		"service": "Cal.ai API",
+		"status": "ok",
+		"health": "/health",
+		"docs": "/docs",
+	}
+
+
 @app.get("/health")
 def health_check() -> dict[str, str]:
 	return {"status": "ok"}
